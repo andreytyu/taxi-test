@@ -12,7 +12,7 @@ Start a container with a PostGIS-enabled database as follows:
 ```
 docker run -p 9900:5432 -v $(pwd):/data --name taxi-postgis -e POSTGRES_PASSWORD=password -d mdillon/postgis
 ```
-Database will start on `localhost:9900`, create a `/data` volume and mount all data from current directory there
+Database `postgres` with user `postgres` and password `password` will start on `localhost:9900`, create a `/data` volume and mount all data from current directory there
 
 Connect to the database:
 ```
