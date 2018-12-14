@@ -19,4 +19,8 @@ Connect to the database:
 docker run -v $(pwd):/data  -it --link taxi-postgis:postgres --rm postgres     sh -c 'exec psql -h "$POSTGRES_PORT_5432_TCP_ADDR" -p "$POSTGRES_PORT_5432_TCP_PORT" -U postgres'
 ```
 
-Run https://github.com/andreytyu/taxi-test/blob/master/sql/data_prep.sql
+Run https://github.com/andreytyu/taxi-test/blob/master/sql/data_prep.sql from psql console with this command:
+
+```
+\i /data/data_prep.sql
+```
