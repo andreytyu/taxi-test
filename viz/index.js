@@ -2,7 +2,7 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiZ2VvdHl1a2F2aW4iLCJhIjoiY2l3YzFrcGF2MDA0czJ5cTdtbWYxY3hoOSJ9.27RqchNskV797X9k_SG0BQ';
 var map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/geotyukavin/cjlgvlt4t046t2so6gl6cwh28',
+  style: 'mapbox://styles/geotyukavin/cjpr63fyh0iv62rnlh51fw4ce',
   center: [-73.97, 40.74], 
   zoom: 12
 });
@@ -39,7 +39,8 @@ map.on('load', () => {
         ]
     },
       'fill-opacity': 0.5,
-      'fill-antialias': false
+      'fill-antialias': true,
+      'fill-outline-color': 'white'
     }
   },'waterway-label');
 
@@ -172,6 +173,34 @@ toggleLayer('2', ['points-heat'], 'Heatmap');
         var layers = document.getElementById('menu');
         layers.appendChild(button);
   };
+
+
+
+  map.on('click', 'zones', function (e) {
+
+    var coordinates = turf.centroid(e.features[0].geometry).geometry.coordinates.slice();
+    var description =e.features[0].properties.zone
+    var description2 =e.features[0].properties.count
+    
+    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+    }
+
+    new mapboxgl.Popup()
+      .setLngLat(coordinates)
+      .setHTML(description + '<br/> trip_count: ' + description2)
+      .addTo(map);
+  });
+
+
+  map.on('mouseenter', 'zones', function () {
+    map.getCanvas().style.cursor = 'pointer';
+  });
+  
+     
+  map.on('mouseleave', 'zones', function () {
+  map.getCanvas().style.cursor = '';
+  });
 
 
 
