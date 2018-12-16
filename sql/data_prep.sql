@@ -16,14 +16,15 @@ SELECT AddGeometryColumn('trips', 'geom', 4326, 'POINT',2);
 
 -- update columns with geometries and drop unneeded columns
 UPDATE zones
-SET geom = ST_SetSRID(st_geomfromtext(text_geom), 4326)
+SET geom = ST_SetSRID(st_geomfromtext(text_geom), 4326);
 ALTER TABLE zones 
 DROP COLUMN text_geom;
 
 UPDATE trips
 SET geom = ST_SetSRID(st_point(lon, lat), 4326);
 ALTER TABLE trips 
-DROP COLUMN lon,
+DROP COLUMN lon;
+ALTER TABLE trips 
 DROP COLUMN lat;
 
 -- create spatial index on geometry tables

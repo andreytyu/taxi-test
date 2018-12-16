@@ -6,7 +6,7 @@ Clone the repo and enter the sql directory:
 git clone https://github.com/andreytyu/taxi-test.git
 cd taxi-test/sql
 ```
-Copy taxi trip data to the directory.
+*Copy taxi trip data to the directory!*
 
 Start a container with a PostGIS-enabled database as follows:
 ```
