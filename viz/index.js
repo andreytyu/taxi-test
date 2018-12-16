@@ -1,9 +1,36 @@
 
-mapboxgl.accessToken = 'pk.eyJ1IjoibGVuYWVtYXlhIiwiYSI6ImNpa3VhbXE5ZjAwMXB3eG00ajVyc2J6ZTIifQ.kmZ4yVcNrupl4H8EonM3aQ';
+mapboxgl.accessToken = 'pk.eyJ1IjoiZ2VvdHl1a2F2aW4iLCJhIjoiY2l3YzFrcGF2MDA0czJ5cTdtbWYxY3hoOSJ9.27RqchNskV797X9k_SG0BQ';
 var map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/lenaemaya/cjnwzrci100a32ro9ukssqg83',
-  center: [37.62723840, 55.8291615], 
-  zoom: 13,
-  minZoom: 9
+  style: 'mapbox://styles/geotyukavin/cjlgvlt4t046t2so6gl6cwh28',
+  center: [-73.97, 40.74], 
+  zoom: 10
 });
+
+map.on('load', () => {
+  map.addSource('zones', {
+    type: 'geojson',
+    data: "https://github.com/andreytyu/taxi-test/blob/master/zones_with_counts.geojson",
+  });
+
+  map.addSource('points', {
+    type: 'geojson',
+    data: "https://github.com/andreytyu/taxi-test/blob/master/sample_pnts.geojson",
+  });
+
+  map.addLayer({
+    id: 'zones',
+    type: 'fill',
+    source: 'zones',
+    layout: {
+      visibility: "none",
+    },
+    paint: {
+      'fill-color': '#548FFF',
+      'fill-opacity': 0.05,
+      'fill-antialias': false
+    }
+  },'waterway-label');
+
+
+})
