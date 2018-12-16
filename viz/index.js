@@ -22,15 +22,11 @@ map.on('load', () => {
     id: 'zones',
     type: 'fill',
     source: 'zones',
-    layout: {
-      visibility: "none",
-    },
     paint: {
       'fill-color': '#548FFF',
       'fill-opacity': 0.05,
       'fill-antialias': false
     }
   },'waterway-label');
-
 
 })
