@@ -7,21 +7,3 @@ var map = new mapboxgl.Map({
   zoom: 13,
   minZoom: 9
 });
-
-
-
-map.on('load', () => {
-  
-  map.addSource('zones', {
-    type: 'geojson',
-    data: "https://github.com/andreytyu/taxi-test/blob/master/zones_with_counts.geojson",
-  });
-  
-  map.addSource('points', {
-    type: 'geojson',
-    data: "https://github.com/andreytyu/taxi-test/blob/master/sample_pnts.geojson",
-  });    
-  
-  
-})
-  
