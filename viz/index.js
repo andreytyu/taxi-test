@@ -11,12 +11,12 @@ var map = new mapboxgl.Map({
 map.on('load', () => {
   map.addSource('zones', {
     type: 'geojson',
-    data: "https://raw.githubusercontent.com/andreytyu/taxi-test/blob/master/zones_with_counts.geojson",
+    data: "https://raw.githubusercontent.com/andreytyu/taxi-test/master/zones_with_counts.geojson",
   });
 
   map.addSource('points', {
     type: 'geojson',
-    data: "https://raw.githubusercontent.com/andreytyu/taxi-test/blob/master/sample_pnts.geojson",
+    data: "https://raw.githubusercontent.com/andreytyu/taxi-test/master/sample_pnts.geojson",
   });
 
   map.addLayer({
