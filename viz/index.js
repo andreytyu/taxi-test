@@ -1,4 +1,3 @@
-
 mapboxgl.accessToken = 'pk.eyJ1IjoiZ2VvdHl1a2F2aW4iLCJhIjoiY2l3YzFrcGF2MDA0czJ5cTdtbWYxY3hoOSJ9.27RqchNskV797X9k_SG0BQ';
 var map = new mapboxgl.Map({
   container: 'map',
@@ -6,7 +5,6 @@ var map = new mapboxgl.Map({
   center: [-73.97, 40.74], 
   zoom: 12
 });
-
 
 map.on('load', () => {
   map.addSource('zones', {
@@ -43,11 +41,6 @@ map.on('load', () => {
       'fill-outline-color': 'white'
     }
   },'waterway-label');
-
-        
-
-
-
 
   map.addLayer({
     id: 'points-heat',
@@ -91,8 +84,6 @@ map.on('load', () => {
         1, 'rgb(189,0,38)'
       ],
 
-
-
       // increase radius as zoom increases
       'heatmap-radius': {
         stops: [
@@ -110,8 +101,6 @@ map.on('load', () => {
       },
     }
   });
-
-
 
   map.addLayer({
     id: 'points-point',
@@ -142,13 +131,8 @@ map.on('load', () => {
     }
   }, 'waterway-label');
   
-
-
 toggleLayer('1', ['zones'], 'Choropleth');
 toggleLayer('2', ['points-heat'], 'Heatmap');
-
-
-
 
  function toggleLayer(id, ids, name) {
         var button = document.createElement('a');
@@ -174,8 +158,6 @@ toggleLayer('2', ['points-heat'], 'Heatmap');
         layers.appendChild(button);
   };
 
-
-
   map.on('click', 'zones', function (e) {
 
     var coordinates = turf.centroid(e.features[0].geometry).geometry.coordinates.slice();
@@ -192,16 +174,12 @@ toggleLayer('2', ['points-heat'], 'Heatmap');
       .addTo(map);
   });
 
-
   map.on('mouseenter', 'zones', function () {
     map.getCanvas().style.cursor = 'pointer';
   });
-  
-     
+   
   map.on('mouseleave', 'zones', function () {
   map.getCanvas().style.cursor = '';
   });
-
-
 
 })
